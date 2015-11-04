@@ -137,7 +137,9 @@ updateSeries = function() {
     if (!reIsGood || !imIsGood || !maxNIsGood)
         return;
     
-    var z = math.complex(parseFloat(re_z), parseFloat(im_z));
+    re_z = parseFloat(re_z);
+    im_z = parseFloat(im_z);
+    var z = math.complex(re_z, im_z);
     
     for (var elementId in seriesDescription) {
         if (!document.getElementById("cb" + elementId).checked) {
@@ -147,6 +149,7 @@ updateSeries = function() {
         var ab = seriesDescription[elementId];
         var a = ab[0];
         var b = ab[1];
+        document.getElementById("a" + elementId).href = getHref(re_z, im_z, elementId);
         document.getElementById(elementId).innerHTML = formatC(compute(z, a, b));
     }
 }
