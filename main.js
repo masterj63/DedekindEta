@@ -16,6 +16,19 @@ var seriesDescription = {
 
 // SECTION: function
 
+getHref = function(re, im, elementId) {
+    var a = elementId.substring(0, 2);
+    var b = elementId.substring(3);
+    
+    var s = re.toString();
+    if(im > 0)
+        s += "%2B";
+    s += im.toString() + "*i";
+    var pref = "http://www.wolframalpha.com/input/?i=DedekindEta%5B" + a + "*%28";
+    var mid = "%29%5D*DedekindEta%5B" + b + "*%28";
+    return pref + s + mid + s + "%29%5D"
+}
+
 formatC = function(c) {
     return "re= " + c.re + "<br>" + "im= " + c.im + "<br><br>";
 }
