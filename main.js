@@ -1,5 +1,6 @@
 // SECTION: var
 
+var PRECISION = 12;
 var MAX_N = 200;
 var EPS_SQR = 0;
 var ZERO_C = math.complex(0, 0);
@@ -30,7 +31,13 @@ getHref = function(re, im, elementId) {
 }
 
 formatC = function(c) {
-    return "re= " + c.re + "<br>" + "im= " + c.im + "<br><br>";
+    var re = math.format(c.re, {notation: 'fixed', precision: PRECISION});
+    if (c.re >= 0)
+        re = "&nbsp;" + re;
+    var im = math.format(c.im, {notation: 'fixed', precision: PRECISION});
+    if (c.im >= 0)
+        im = "&nbsp;" + im;
+    return "re= " + re + "<br>" + "im= " + im + "<br><br>";
 }
 
 moduleCSqr = function(c) {
