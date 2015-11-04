@@ -50,7 +50,6 @@ moduleCSqr = function(c) {
  * where q(_z_) = \exp(2*pi*i*z).
  */
 compute = function(z, a, b) {
-    //window.alert(MAX_N);
     var q = math.exp(math.multiply(math.multiply(math.i, z), 2 * math.pi));
     var sum = math.complex(0, 0);
     
