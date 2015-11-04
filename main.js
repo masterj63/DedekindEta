@@ -21,7 +21,7 @@ getHref = function(re, im, elementId) {
     var b = elementId.substring(3);
     
     var s = re.toString();
-    if(im > 0)
+    if(im >= 0)
         s += "%2B";
     s += im.toString() + "*i";
     var pref = "http://www.wolframalpha.com/input/?i=DedekindEta%5B" + a + "*%28";
