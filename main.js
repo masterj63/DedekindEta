@@ -139,13 +139,25 @@ updateSeries = function() {
         setBackgroundWhite(maxNInput);
     else
         setBackgroundRed(maxNInput);
-    MAX_N = maxN;
     
-    if (!reIsGood || !imIsGood || !maxNIsGood)
+    var precisionInput = document.getElementById("precision");
+    var precision = precisionInput.value;
+    var precisionIsGood = isFloatParseable(precision)
+                            && precision == Math.round(precision)
+                            && 1 <= precision && precision <= 16;
+    if (precisionIsGood)
+        setBackgroundWhite(precisionInput);
+    else
+        setBackgroundRed(precisionInput);
+    
+    if (!reIsGood || !imIsGood || !maxNIsGood || !precisionIsGood)
         return;
     
     re_z = parseFloat(re_z);
     im_z = parseFloat(im_z);
+    MAX_N = maxN;
+    PRECISION = parseFloat(precision);
+    
     var z = math.complex(re_z, im_z);
     
     for (var elementId in seriesDescription) {
